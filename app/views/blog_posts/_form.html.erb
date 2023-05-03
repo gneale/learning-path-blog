@@ -1,0 +1,25 @@
+<%# Create a form for a new blog_post %>
+<%= form_with model: blog_post do |f| %>
+ <% if f.object.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(f.object.errors.count, "error") %> prohibited
+      this blog_post from being saved:
+    </h2>
+    <ul>
+      <% f.object.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+      <% end %>
+<div>
+  <%= f.text_field :title %>
+</div>
+<div>
+  <%= f.text_area :body %>
+</div>
+<div>
+  <%= f.submit %>
+</div>
+<% end %>
